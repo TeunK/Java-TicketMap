@@ -23,9 +23,21 @@ public class Grid {
 
     public void placeEvent(Event event) {
         if (isLocationWithinGrid(event.getLocation())) {
-            locationEventMap.put(event.getLocation(), event);
+            if (!locationEventMap.containsKey(event.getLocation())) {
+                locationEventMap.put(event.getLocation(), event);
+            } else {
+                throw new IllegalArgumentException("An event already exists at this location");
+            }
         } else {
             throw new IllegalArgumentException("Event location out of bounds");
+        }
+    }
+
+    public void removeEvent(Event event) {
+        if (locationEventMap.containsKey(event.getLocation())) {
+            locationEventMap.remove(event.getLocation());
+        } else {
+            throw new IllegalArgumentException("No events were found at the specified location");
         }
     }
 

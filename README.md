@@ -13,6 +13,7 @@ Graduate Developer Test
 
 ##Questions
 - **How might you change your program if you needed to support multiple events at the same location?**
+
 Basically instead of mapping single events in the grid (Grid.java), replace this with a list of events.
 replace:
 
@@ -26,6 +27,7 @@ This would be followed up some refactoring as now we have to work with a list, w
 size 0 or 1 would still be easy to work with, however >1 would require more assumptions to be made, for "nearest 5 events" could already be found in a single nearest neighboring point on the grid. In fact, even more than 5 may be there simultaneously.
 
 - **How would you change your program if you were working with a much larger world size?**
+
 This would not change anything to the program, as only the events are stored with a specific location when they exist.
 Having a larger world size would only change the potential locations of these Events.
 In [NearestEvents](#nearestevents) I mention 2 options to solve the find-nearest-events method, and I chose the one mentioned in Example 1 for this reason.

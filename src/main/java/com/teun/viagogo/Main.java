@@ -2,6 +2,7 @@ package com.teun.viagogo;
 
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Created by Teun on 10/29/2016.
@@ -31,6 +32,24 @@ public class Main
             }
         }
 
+        // take input from user
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please Input Coordinates: ");
+        String request = scanner.nextLine();
+        Location coordinates = Util.stringToLocation(request);
+        System.out.println("Closest events to ("+
+                Integer.toString(coordinates.getX())+","+
+                Integer.toString(coordinates.getY())+"):");
 
+        // find the closest 5 neighbors to this location
+        List<EventDistanceCheapestTicket> closestEvents = map.getClosestEvents(coordinates, 5);
+
+        // print results
+        for (EventDistanceCheapestTicket eventDistanceCheapestTicket : closestEvents) {
+            String eventID = Integer.toString(eventDistanceCheapestTicket.getEvent().getId());
+            String price = Double.toString(eventDistanceCheapestTicket.getCheapestTicket().getPrice());
+            String distance = Integer.toString(eventDistanceCheapestTicket.getDistance());
+            System.out.println("Event " +eventID + " - $" + price + ", Distance " + distance);
+        }
     }
 }

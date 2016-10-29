@@ -19,4 +19,16 @@ public class Grid {
         this.maxY = maxY;
     }
 
+    public void placeEvent(Event event) {
+        if (isLocationWithinGrid(event.getLocation())) {
+            locationEventMap.put(event.getLocation(), event);
+        } else {
+            throw new IllegalArgumentException("Event location out of bounds");
+        }
+    }
+
+    private boolean isLocationWithinGrid(Location location) {
+        return (location.getX() >= minX && location.getY() >= minY && location.getX() <= maxX && location.getY() <= maxY);
+    }
+
 }

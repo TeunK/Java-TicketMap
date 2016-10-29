@@ -3,13 +3,29 @@
 Graduate Developer Test
 
 ##Table of Contents
-- [Considerations](#considerations)
+- [Assumptions](#Assumptions)
 - [NearestEvents](#nearestevents)
 
-##Considerations
+##Assumptions
 -
 -
 -
+
+##Questions
+- **How might you change your program if you needed to support multiple events at the same location?**
+Basically instead of mapping single events in the grid (Grid.java), replace this with a list of events.
+replace:
+> private final Map<Location, Event> locationEventMap;
+with:
+> private final Map<Location, List<Event>> locationEventsMap;
+This would be followed up some refactoring as now we have to work with a list, which may be empty, contain 1 event, or >1 events.
+size 0 or 1 would still be easy to work with, however >1 would require more assumptions to be made, for "nearest 5 events" could already be found in a single nearest neighboring point on the grid. In fact, even more than 5 may be there simultaneously.
+
+- **How would you change your program if you were working with a much larger world size?**
+This would not change anything to the program, as only the events are stored with a specific location when they exist.
+Having a larger world size would only change the potential locations of these Events.
+In [NearestEvents](#nearestevents) I mention 2 options to solve the find-nearest-events method, and I chose the one mentioned in Example 1 for this reason.
+
 
 ##NearestEvents
 There are several ways to implement the task of returning a list of the five closest events

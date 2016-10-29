@@ -18,6 +18,14 @@ public class Event {
         setLocation(location);
     }
 
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void addTicket(Ticket ticket) {
+        this.tickets.add(ticket);
+    }
+
     public Location getLocation() {
         return location;
     }

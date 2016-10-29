@@ -55,7 +55,7 @@ public class MainTest
 
     @Test
     public void addsLegalEventToGrid() {
-        Grid grid = new Grid(-10, -10, 10, 10);
+        Grid grid = new Grid(-10, -10, 10, 10, new ManhattanDistanceCalculator());
         Location validLocation = new Location(5,5);
         Event validEvent = new Event(validLocation, new ArrayList<Ticket>());
         grid.placeEvent(validEvent);
@@ -64,7 +64,7 @@ public class MainTest
 
     @Test(expected=IllegalArgumentException.class)
     public void addsOutOfBoundsEventToGrid() {
-        Grid grid = new Grid(-10, -10, 10, 10);
+        Grid grid = new Grid(-10, -10, 10, 10, new ManhattanDistanceCalculator());
         Location invalidLocation = new Location(-20,5);
         Event invalidEvent = new Event(invalidLocation, new ArrayList<Ticket>());
         grid.placeEvent(invalidEvent);
@@ -72,7 +72,7 @@ public class MainTest
 
     @Test(expected=IllegalArgumentException.class)
     public void multipleEventsAtSamePointOnGrid() {
-        Grid grid = new Grid(-10, -10, 10, 10);
+        Grid grid = new Grid(-10, -10, 10, 10, new ManhattanDistanceCalculator());
         Location validLocation = new Location(1,4);
         Event validEvent1 = new Event(validLocation, new ArrayList<Ticket>());
         Event validEvent2 = new Event(validLocation, new ArrayList<Ticket>());
@@ -82,7 +82,7 @@ public class MainTest
 
     @Test
     public void removingEventFromGrid() {
-        Grid grid = new Grid(-10, -10, 10, 10);
+        Grid grid = new Grid(-10, -10, 10, 10, new ManhattanDistanceCalculator());
         Location validLocation = new Location(1,4);
         Event validEvent1 = new Event(validLocation, new ArrayList<Ticket>());
         Event validEvent2 = new Event(validLocation, new ArrayList<Ticket>());

@@ -12,13 +12,15 @@ public class Grid {
     private final int minY;
     private final int maxX;
     private final int maxY;
+    private final DistanceCalculator distanceCalculator;
 
-    public Grid(int minX, int minY, int maxX, int maxY) {
+    public Grid(int minX, int minY, int maxX, int maxY, DistanceCalculator distanceCalculator) {
         this.minX = minX;
         this.minY = minY;
         this.maxX = maxX;
         this.maxY = maxY;
         locationEventMap = new HashMap<Location, Event>();
+        this.distanceCalculator = distanceCalculator;
     }
 
     public void placeEvent(Event event) {

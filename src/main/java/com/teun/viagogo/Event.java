@@ -14,7 +14,15 @@ public class Event {
 
     public Event(Location location, List<Ticket> tickets) {
         this.id = ID_COUNTER.getAndAdd(1);
-        this.location = location;
         this.tickets = tickets;
+        setLocation(location);
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }

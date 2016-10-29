@@ -3,32 +3,20 @@ package com.teun.viagogo;
 /**
  * Created by Teun on 10/29/2016.
  */
-public class RegularTicket implements Ticket {
-    private double price;
-
+public class RegularTicket extends Ticket {
     public RegularTicket(double price) {
-        setPrice(price);
+        super(price);
     }
 
     public void setPrice(double price) {
-        if (price >= 1) {
+        if (price > 0) {
             this.price = price;
         } else {
-            throw new IllegalArgumentException("Ticket price should be 1.00 USD or above");
+            throw new IllegalArgumentException("Ticket price should be greater than zero");
         }
     }
 
     public double getPrice() {
         return price;
-    }
-
-    public int compareTo(Ticket o) {
-        if (this.price > o.getPrice()) {
-            return 1;
-        } else if (this.price < o.getPrice()) {
-            return -1;
-        } else {
-            return 0;
-        }
     }
 }

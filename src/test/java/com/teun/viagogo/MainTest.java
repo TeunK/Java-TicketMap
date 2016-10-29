@@ -188,4 +188,37 @@ public class MainTest
         closestEvent = grid.getClosestEvents(new Location(-10,-10), 1);
         assertEquals(event5.getId(), closestEvent.get(0).getEvent().getId());
     }
+
+    @Test
+    public void validPositiveCoordinateInput() {
+        String input = "1,6";
+        assertEquals(1, Util.stringToLocation(input).getX());
+        assertEquals(6, Util.stringToLocation(input).getY());
+    }
+
+    @Test
+    public void validNegativeCoordinateInput() {
+        String input = "-3,-10";
+        assertEquals(-3, Util.stringToLocation(input).getX());
+        assertEquals(-10, Util.stringToLocation(input).getY());
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void invalidCoordinateInputMissingComma() {
+        String input = "6236";
+        Util.stringToLocation(input);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void invalidCoordinateInputMissingX() {
+        String input = ",1";
+        Util.stringToLocation(input);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void invalidCoordinateInputMissingY() {
+        String input = "0,";
+        Util.stringToLocation(input);
+    }
+
 }

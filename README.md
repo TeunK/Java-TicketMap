@@ -7,9 +7,11 @@ Graduate Developer Test
 - [NearestEvents](#nearestevents)
 
 ##Assumptions
+
 - When we look for the 5 nearest events, and find their cheapest tickets, we ignore events that have no tickets available.
+
 - Ties are handled arbitrarily. For example, if a user requests 1 nearest event, and 2 nearest events have the same distance, either one is allowed to be chosen. One could consider a secondary sort based on the cheapest price out of the two (if not equal), or using another tie breaking method.
--
+
 
 ##Questions
 - **How might you change your program if you needed to support multiple events at the same location?**

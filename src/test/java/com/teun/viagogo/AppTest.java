@@ -3,6 +3,9 @@ package com.teun.viagogo;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Teun on 10/29/2016.
  */
@@ -49,4 +52,22 @@ public class AppTest
     public void negativeTicketPrice() {
         Ticket ticket = new RegularTicket(-5);
     }
+
+    @Test
+    public void addsLegalEventToGrid() {
+        Grid grid = new Grid(-10, -10, 10, 10);
+        Location validLocation = new Location(5,5);
+        Event validEvent = new Event(validLocation, new ArrayList<Ticket>());
+        grid.placeEvent(validEvent);
+        assertEquals(validEvent, grid.getEventAtLocation(validLocation));
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void addsOutOfBoundsEventToGrid() {
+        Grid grid = new Grid(-10, -10, 10, 10);
+        Location invalidLocation = new Location(-20,5);
+        Event invalidEvent = new Event(invalidLocation, new ArrayList<Ticket>());
+        grid.placeEvent(invalidEvent);
+    }
+
 }

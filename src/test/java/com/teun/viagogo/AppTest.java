@@ -12,4 +12,17 @@ public class AppTest
     public void shouldReturnHello() {
         assertEquals("hello", "hello");
     }
+
+    @Test
+    public void shouldReturnPositiveLocation(){
+        Location positiveLocation = new Location(2, 5);
+        assertEquals(2, positiveLocation.getX());
+        assertEquals(5, positiveLocation.getY());
+    }
+    @Test
+    public void shouldReturnNegativeLocation(){
+        Location negativeLocation = new Location(-10, -9);
+        assertEquals(-10, negativeLocation.getX());
+        assertEquals(-9, negativeLocation.getY());
+    }
 }

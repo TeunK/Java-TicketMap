@@ -18,6 +18,14 @@ public class EventDistanceCheapestTicket implements Comparable<EventDistanceChea
         return event;
     }
 
+    public String printDetails() {
+        String eventID = Integer.toString(getEvent().getId());
+        String price = Double.toString(getCheapestTicket().getPrice());
+        String distance = Integer.toString(getDistance());
+
+        return "Event " +eventID + " - $" + price + ", Distance " + distance;
+    }
+
     public int getDistance() {
         return distance;
     }

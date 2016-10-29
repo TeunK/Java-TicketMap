@@ -92,4 +92,21 @@ public class MainTest
         assertEquals(validEvent2.getId(), grid.getEventAtLocation(validEvent2.getLocation()).getId());
     }
 
+    @Test
+    public void manhattanBaseCase() {
+        DistanceCalculator manhattanCalculator = new ManhattanDistanceCalculator();
+        Location a = new Location(5, 2);
+        Location b = new Location(2, 3);
+        int distance = manhattanCalculator.getDistanceBetweenTwoLocations(a, b);
+        assertEquals(4, distance);
+    }
+
+    @Test
+    public void manhattanNegativeLocations() {
+        DistanceCalculator manhattanCalculator = new ManhattanDistanceCalculator();
+        Location a = new Location(-10, 10);
+        Location b = new Location(10, -10);
+        int distance = manhattanCalculator.getDistanceBetweenTwoLocations(a, b);
+        assertEquals(40, distance);
+    }
 }

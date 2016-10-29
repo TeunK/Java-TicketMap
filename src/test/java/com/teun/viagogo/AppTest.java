@@ -19,10 +19,24 @@ public class AppTest
         assertEquals(2, positiveLocation.getX());
         assertEquals(5, positiveLocation.getY());
     }
+
     @Test
     public void shouldReturnNegativeLocation(){
         Location negativeLocation = new Location(-10, -9);
         assertEquals(-10, negativeLocation.getX());
         assertEquals(-9, negativeLocation.getY());
+    }
+
+    @Test
+    public void shouldCreateTicket(){
+        Ticket ticket = new RegularTicket(19.20);
+        assertEquals(19.20, ticket.getPrice(), 0);
+    }
+
+    @Test
+    public void shouldUpdateTicketPrice(){
+        Ticket ticket = new RegularTicket(10.00);
+        ticket.setPrice(15.00);
+        assertEquals(15.00, ticket.getPrice(), 0);
     }
 }

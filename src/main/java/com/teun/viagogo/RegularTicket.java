@@ -11,7 +11,11 @@ public class RegularTicket implements Ticket {
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        if (price >= 1) {
+            this.price = price;
+        } else {
+            throw new IllegalArgumentException("Ticket price should be 1.00 USD or above");
+        }
     }
 
     public double getPrice() {

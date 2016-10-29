@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Teun on 10/29/2016.
  */
-public class AppTest
+public class MainTest
 {
     @Test
     public void shouldReturnHello() {

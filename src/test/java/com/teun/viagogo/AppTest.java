@@ -39,4 +39,14 @@ public class AppTest
         ticket.setPrice(15.00);
         assertEquals(15.00, ticket.getPrice(), 0);
     }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void zeroTicketPrice() {
+        Ticket ticket = new RegularTicket(0);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void negativeTicketPrice() {
+        Ticket ticket = new RegularTicket(-5);
+    }
 }

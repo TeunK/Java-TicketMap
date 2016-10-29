@@ -33,4 +33,8 @@ public class Event {
     public void setLocation(Location location) {
         this.location = location;
     }
+
+    public int getId() {
+        return id;
+    }
 }

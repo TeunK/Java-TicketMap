@@ -7,7 +7,7 @@ public class RegularTicket implements Ticket {
     private double price;
 
     public RegularTicket(double price) {
-        this.price = price;
+        setPrice(price);
     }
 
     public void setPrice(double price) {

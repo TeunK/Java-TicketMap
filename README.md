@@ -7,7 +7,7 @@ Graduate Developer Test
 - [NearestEvents](#nearestevents)
 
 ##Assumptions
--
+- When we look for the 5 nearest events, and find their cheapest tickets, we ignore events that have no tickets available.
 -
 -
 

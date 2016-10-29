@@ -21,4 +21,14 @@ public class RegularTicket implements Ticket {
     public double getPrice() {
         return price;
     }
+
+    public int compareTo(Ticket o) {
+        if (this.price > o.getPrice()) {
+            return 1;
+        } else if (this.price < o.getPrice()) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
 }

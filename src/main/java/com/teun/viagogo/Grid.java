@@ -1,7 +1,6 @@
 package com.teun.viagogo;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Teun on 10/29/2016.
@@ -51,5 +50,39 @@ public class Grid {
         return locationEventMap.get(location);
     }
 
+    public List<EventDistanceCheapestTicket> getClosestEvents(Location location, int limit) {
+        List<EventDistanceCheapestTicket> eventDistanceCheapestTickets = combineEventDetails(locationEventMap, location);
 
+        return filterCheapestNearbyEventTickets(eventDistanceCheapestTickets, limit);
+    }
+
+    private List<EventDistanceCheapestTicket> combineEventDetails(Map<Location, Event> locationEventMap, Location location) {
+        List<EventDistanceCheapestTicket> eventDistanceCheapestTickets = new ArrayList<EventDistanceCheapestTicket>();
+        for (Map.Entry<Location, Event> entry : locationEventMap.entrySet()) {
+            eventDistanceCheapestTickets.add(new EventDistanceCheapestTicket(entry.getValue(),
+                    distanceCalculator.getDistanceBetweenTwoLocations(entry.getKey(), location), null));
+        }
+        Collections.sort(eventDistanceCheapestTickets);
+
+        return eventDistanceCheapestTickets;
+    }
+
+    private List<EventDistanceCheapestTicket> filterCheapestNearbyEventTickets(List<EventDistanceCheapestTicket> eventDistanceCheapestTickets, int limit) {
+        List<EventDistanceCheapestTicket> cheapestNearbyEventTickets = new ArrayList<EventDistanceCheapestTicket>();
+        for (EventDistanceCheapestTicket eventDistanceCheapestTicket : eventDistanceCheapestTickets) {
+            Event event = eventDistanceCheapestTicket.getEvent();
+            List<Ticket> tickets = event.getTickets();
+            Collections.sort(tickets);
+
+            if (tickets.size() > 0) {
+                eventDistanceCheapestTicket.setCheapestTicket(tickets.get(0));
+                cheapestNearbyEventTickets.add(eventDistanceCheapestTicket);
+            }
+
+            if (cheapestNearbyEventTickets.size() == limit) {
+                break;
+            }
+        }
+        return cheapestNearbyEventTickets;
+    }
 }

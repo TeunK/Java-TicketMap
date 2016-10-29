@@ -1,8 +1,7 @@
 package com.teun.viagogo;
 
 /**
- * Hello world!
- *
+ * Created by Teun on 10/29/2016.
  */
 public class App 
 {

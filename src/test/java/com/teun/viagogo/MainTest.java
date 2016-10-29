@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -41,6 +42,25 @@ public class MainTest
         Ticket ticket = new RegularTicket(10.00);
         ticket.setPrice(15.00);
         assertEquals(15.00, ticket.getPrice(), 0);
+    }
+
+    @Test
+    public void assignsCorrectEventId() {
+        Event event1 = new Event(new Location(0,1), new ArrayList<Ticket>());
+        int initialID = event1.getId();
+
+        Event event2 = new Event(new Location(0,2), new ArrayList<Ticket>());
+        assertEquals(initialID+1, event2.getId());
+        Event event3 = new Event(new Location(0,3), new ArrayList<Ticket>());
+        assertEquals(initialID+2, event3.getId());
+    }
+
+    @Test
+    public void addsTickets() {
+        Event event = new Event(new Location(0,0), new ArrayList<Ticket>());
+        event.addTicket(new RegularTicket(10.00));
+        event.addTicket(new RegularTicket(12.50));
+        assertEquals(2, event.getTickets().size());
     }
 
     @Test(expected=IllegalArgumentException.class)
@@ -108,5 +128,64 @@ public class MainTest
         Location b = new Location(10, -10);
         int distance = manhattanCalculator.getDistanceBetweenTwoLocations(a, b);
         assertEquals(40, distance);
+    }
+
+    @Test
+    public void sortEventDistances() {
+        DistanceCalculator calculator = new ManhattanDistanceCalculator();
+        Location target = new Location(0,0);
+
+        Event event1 = new Event(new Location(1, 0), new ArrayList<Ticket>());
+        int distance1 = calculator.getDistanceBetweenTwoLocations(target, event1.getLocation());
+
+        Event event2 = new Event(new Location(2, 0), new ArrayList<Ticket>());
+        int distance2 = calculator.getDistanceBetweenTwoLocations(target, event2.getLocation());
+
+        Event event3 = new Event(new Location(0, 3), new ArrayList<Ticket>());
+        int distance3 = calculator.getDistanceBetweenTwoLocations(target, event3.getLocation());
+
+        EventDistanceCheapestTicket eventDistanceCheapestTicket1 = new EventDistanceCheapestTicket(event1, distance1, new RegularTicket(5.00));
+        EventDistanceCheapestTicket eventDistanceCheapestTicket2 = new EventDistanceCheapestTicket(event2, distance2, new RegularTicket(5.00));
+        EventDistanceCheapestTicket eventDistanceCheapestTicket3 = new EventDistanceCheapestTicket(event3, distance3, new RegularTicket(5.00));
+
+        List<EventDistanceCheapestTicket> eventDistanceCheapestTickets = new ArrayList<EventDistanceCheapestTicket>();
+        //note: inserted in shuffled order in terms of their distance from target
+        eventDistanceCheapestTickets.add(eventDistanceCheapestTicket3);
+        eventDistanceCheapestTickets.add(eventDistanceCheapestTicket1);
+        eventDistanceCheapestTickets.add(eventDistanceCheapestTicket2);
+
+        Collections.sort(eventDistanceCheapestTickets);
+
+        assertEquals(event1.getId(), eventDistanceCheapestTickets.get(0).getEvent().getId());
+        assertEquals(event2.getId(), eventDistanceCheapestTickets.get(1).getEvent().getId());
+        assertEquals(event3.getId(), eventDistanceCheapestTickets.get(2).getEvent().getId());
+    }
+
+    @Test
+    public void find1ClosestEvent() {
+        Grid grid = new Grid(-10, -10, 10, 10, new ManhattanDistanceCalculator());
+        List<Ticket> ticketList = new ArrayList<Ticket>();
+        ticketList.add(new RegularTicket(26.00));
+        ticketList.add(new RegularTicket(22.00));
+        ticketList.add(new RegularTicket(30.00));
+        ticketList.add(new RegularTicket(31.00));
+
+        Event event1 = new Event(new Location(1,0), ticketList);
+        Event event2 = new Event(new Location(2,3), ticketList);
+        Event event3 = new Event(new Location(1,6), ticketList);
+        Event event4 = new Event(new Location(-4,5), ticketList);
+        Event event5 = new Event(new Location(-10,-8), ticketList);
+
+        grid.placeEvent(event1);
+        grid.placeEvent(event2);
+        grid.placeEvent(event3);
+        grid.placeEvent(event4);
+        grid.placeEvent(event5);
+
+        List<EventDistanceCheapestTicket> closestEvent = grid.getClosestEvents(new Location(0,0), 1);
+        assertEquals(event1.getId(), closestEvent.get(0).getEvent().getId());
+
+        closestEvent = grid.getClosestEvents(new Location(-10,-10), 1);
+        assertEquals(event5.getId(), closestEvent.get(0).getEvent().getId());
     }
 }

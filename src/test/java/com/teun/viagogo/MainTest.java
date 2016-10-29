@@ -70,4 +70,26 @@ public class MainTest
         grid.placeEvent(invalidEvent);
     }
 
+    @Test(expected=IllegalArgumentException.class)
+    public void multipleEventsAtSamePointOnGrid() {
+        Grid grid = new Grid(-10, -10, 10, 10);
+        Location validLocation = new Location(1,4);
+        Event validEvent1 = new Event(validLocation, new ArrayList<Ticket>());
+        Event validEvent2 = new Event(validLocation, new ArrayList<Ticket>());
+        grid.placeEvent(validEvent1);
+        grid.placeEvent(validEvent2);
+    }
+
+    @Test
+    public void removingEventFromGrid() {
+        Grid grid = new Grid(-10, -10, 10, 10);
+        Location validLocation = new Location(1,4);
+        Event validEvent1 = new Event(validLocation, new ArrayList<Ticket>());
+        Event validEvent2 = new Event(validLocation, new ArrayList<Ticket>());
+        grid.placeEvent(validEvent1);
+        grid.removeEvent(validEvent1);
+        grid.placeEvent(validEvent2);
+        assertEquals(validEvent2.getId(), grid.getEventAtLocation(validEvent2.getLocation()).getId());
+    }
+
 }

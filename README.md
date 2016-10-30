@@ -3,13 +3,13 @@
 Graduate Developer Test
 
 ##Table of Contents
-- [Rules](#Rules)
-- [Assumptions](#Assumptions)
-- [Goal](#Goal)
-- [Nearest Events](#NearestEvents)
-- [Building the Project](#Building)
-- [Running the Project](#Execution)
-- [Running Tests](#Tests)
+- [Rules](#rules)
+- [Assumptions](#assumptions)
+- [Goal](#goal)
+- [Nearest Events](#nearestEvents)
+- [Building the Project](#building)
+- [Running the Project](#execution)
+- [Running Tests](#tests)
 
 ##Rules
 

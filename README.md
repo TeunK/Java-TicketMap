@@ -2,6 +2,7 @@
 
 Graduate Developer Test
 
+
 ##Table of Contents
 - [Rules](#rules)
 - [Assumptions](#assumptions)
@@ -10,6 +11,7 @@ Graduate Developer Test
 - [Building the Project](#building)
 - [Running the Project](#execution)
 - [Running Tests](#tests)
+
 
 ##Rules
 
@@ -27,6 +29,7 @@ Graduate Developer Test
 
 - The distance between two points is computed as the Manhattan distance
 
+
 ##Assumptions
 
 - When we look for the 5 nearest events, and find their cheapest tickets, we ignore events that have no tickets available.
@@ -34,6 +37,7 @@ Graduate Developer Test
 - Ties are handled arbitrarily. For example, if a user requests 1 nearest event, and 2 nearest events have the same distance, either one is allowed to be chosen. One could consider a secondary sort based on the cheapest price out of the two (if not equal), or using another tie breaking method.
 
 - Despite events not being allowed to take place outside of the grid boundary, users may still insert a location outside of the grid. Imagine it being similar to a navigation system that can still track the user location without having downloaded the appropriate map.
+
 
 ##Questions
 - **How might you change your program if you needed to support multiple events at the same location?**
@@ -81,19 +85,22 @@ For example when the grid model scales from (-1000000, -1000000) to (1000000, 10
 For this reason, the method in example 1 sounds more realistic.
 ```
 
+
 ##Building
 
-Make sure [Maven](http://maven.apache.org/install.html) is installed on your device and run the following command:
+Make sure [Maven](http://maven.apache.org/install.html) is installed on your device and run the following command inside the project folder:
 
 > $ mvn package
 
-This should create an executable jar file inside the `target` folder
+This should create an executable jar file inside the `\target` directory
+
 
 ##Execution
 
 To execute the jar file, run the following command from the project folder:
 
 > $ java -jar target/viagogo-1.0-SNAPSHOT.jar
+
 
 ##Tests
 

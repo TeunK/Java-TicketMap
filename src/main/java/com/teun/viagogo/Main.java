@@ -28,10 +28,10 @@ public class Main
 
     private static Location requestUserCoordinates() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please Input Coordinates: ");
+        System.out.println("\n\nPlease Input Coordinates: ");
         String request = scanner.nextLine();
         Location coordinates = Util.stringToLocation(request);
-        System.out.println("Closest events to ("+
+        System.out.println("\nClosest events to ("+
                 Integer.toString(coordinates.getX())+","+
                 Integer.toString(coordinates.getY())+"):");
         return coordinates;

@@ -1,4 +1,6 @@
-package com.teun.viagogo;
+package com.teun.viagogo.util;
+
+import com.teun.viagogo.Location;
 
 /**
  * Created by Teun on 10/29/2016.

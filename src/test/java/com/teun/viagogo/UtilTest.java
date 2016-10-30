@@ -1,5 +1,6 @@
 package com.teun.viagogo;
 
+import com.teun.viagogo.util.Util;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

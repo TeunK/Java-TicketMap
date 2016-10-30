@@ -1,5 +1,7 @@
 package com.teun.viagogo;
 
+import com.teun.viagogo.tickets.Ticket;
+
 /**
  * Created by Teun on 10/29/2016.
  */

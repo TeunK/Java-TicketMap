@@ -1,5 +1,7 @@
 package com.teun.viagogo;
 
+import com.teun.viagogo.tickets.RegularTicket;
+import com.teun.viagogo.tickets.Ticket;
 import org.junit.Test;
 
 import java.util.ArrayList;

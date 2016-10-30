@@ -1,5 +1,7 @@
 package com.teun.viagogo;
 
+import com.teun.viagogo.tickets.Ticket;
+
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 

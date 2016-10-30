@@ -1,4 +1,4 @@
-package com.teun.viagogo;
+package com.teun.viagogo.tickets;
 
 /**
  * Created by Teun on 10/29/2016.

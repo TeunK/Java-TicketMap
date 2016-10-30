@@ -1,5 +1,8 @@
 package com.teun.viagogo;
 
+import com.teun.viagogo.distance_calculators.DistanceCalculator;
+import com.teun.viagogo.tickets.Ticket;
+
 import java.util.*;
 
 /**

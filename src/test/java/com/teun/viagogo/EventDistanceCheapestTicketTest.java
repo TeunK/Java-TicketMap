@@ -1,5 +1,9 @@
 package com.teun.viagogo;
 
+import com.teun.viagogo.distance_calculators.DistanceCalculator;
+import com.teun.viagogo.distance_calculators.ManhattanDistanceCalculator;
+import com.teun.viagogo.tickets.RegularTicket;
+import com.teun.viagogo.tickets.Ticket;
 import org.junit.Test;
 
 import java.util.ArrayList;

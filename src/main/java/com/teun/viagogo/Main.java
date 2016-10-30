@@ -1,5 +1,10 @@
 package com.teun.viagogo;
 
+import com.teun.viagogo.distance_calculators.ManhattanDistanceCalculator;
+import com.teun.viagogo.tickets.Ticket;
+import com.teun.viagogo.util.MockDataGenerator;
+import com.teun.viagogo.util.Util;
+
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;

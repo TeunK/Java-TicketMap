@@ -3,8 +3,29 @@
 Graduate Developer Test
 
 ##Table of Contents
+- [Rules](#Rules)
 - [Assumptions](#Assumptions)
-- [NearestEvents](#nearestevents)
+- [Goal](#Goal)
+- [Nearest Events](#NearestEvents)
+- [Building the Project](#Building)
+- [Running the Project](#Execution)
+- [Running Tests](#Tests)
+
+##Rules
+
+- Main method automatically initializes a grid with random events and tickets
+
+- The world grid ranges from -10 to +10 in both x- and y-axis
+
+- The program assumes each grid co-ordinate can hold a maximum of one event
+
+- Each event has a unique number identifier (e.g 1, 2, 3)
+
+- Each event has zero or more tickets
+
+- Each ticket has a non-zero price (expressed in US Dollars)
+
+- The distance between two points is computed as the Manhattan distance
 
 ##Assumptions
 
@@ -12,6 +33,7 @@ Graduate Developer Test
 
 - Ties are handled arbitrarily. For example, if a user requests 1 nearest event, and 2 nearest events have the same distance, either one is allowed to be chosen. One could consider a secondary sort based on the cheapest price out of the two (if not equal), or using another tie breaking method.
 
+- Despite events not being allowed to take place outside of the grid boundary, users may still insert a location outside of the grid. Imagine it being similar to a navigation system that can still track the user location without having downloaded the appropriate map.
 
 ##Questions
 - **How might you change your program if you needed to support multiple events at the same location?**
@@ -31,7 +53,7 @@ size 0 or 1 would still be easy to work with, however >1 would require more assu
 - **How would you change your program if you were working with a much larger world size?**
 
 This would not change anything to the program, as only the events are stored with a specific location when they exist.
-Having a larger world size would only change the potential locations of these Events.
+Having a larger world size (larger grid initialized in main method) would only change the potential locations of these Events.
 In [NearestEvents](#nearestevents) I mention 2 options to solve the find-nearest-events method, and I chose the one mentioned in Example 1 for this reason.
 
 
@@ -58,3 +80,21 @@ However this would not really scale either as in a real-world scenario there are
 For example when the grid model scales from (-1000000, -1000000) to (1000000, 1000000) and only hosting about 20 dispersed events in total.
 For this reason, the method in example 1 sounds more realistic.
 ```
+
+##Building
+
+Make sure [Maven](http://maven.apache.org/install.html) is installed on your device and run the following command:
+
+> $ mvn package
+
+This should create an executable jar file inside the `target` folder
+
+##Execution
+
+To execute the jar file, run the following command from the project folder:
+
+> $ java -jar target/viagogo-1.0-SNAPSHOT.jar
+
+##Tests
+
+All tests, located in the `src\test\..\viagogo` folder, are automatically executed when building the project.

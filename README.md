@@ -1,5 +1,10 @@
 # TicketMap
 
+## Technologies
+- Java SE 1.8
+- Maven as Build tool and dependency management
+- JUnit for testing
+
 ## Table of Contents
 - [Rules](#rules)
 - [Assumptions](#assumptions)

@@ -1,9 +1,6 @@
 # TicketMap
 
-Graduate Developer Test
-
-
-##Table of Contents
+## Table of Contents
 - [Rules](#rules)
 - [Assumptions](#assumptions)
 - [Goal](#goal)
@@ -13,7 +10,7 @@ Graduate Developer Test
 - [Running Tests](#tests)
 
 
-##Rules
+## Rules
 
 - Main method automatically initializes a grid with random events and tickets
 
@@ -30,7 +27,7 @@ Graduate Developer Test
 - The distance between two points is computed as the Manhattan distance
 
 
-##Assumptions
+## Assumptions
 
 - When we look for the 5 nearest events, and find their cheapest tickets, we ignore events that have no tickets available.
 
@@ -39,7 +36,7 @@ Graduate Developer Test
 - Despite events not being allowed to take place outside of the grid boundary, users may still insert a location outside of the grid. Imagine it being similar to a navigation system that can still track the user location without having downloaded the appropriate map.
 
 
-##Questions
+## Questions
 - **How might you change your program if you needed to support multiple events at the same location?**
 
 Basically instead of mapping single events in the grid (Grid.java), replace this with a list of events.
@@ -61,7 +58,7 @@ Having a larger world size (larger grid initialized in main method) would only c
 In [NearestEvents](#nearestevents) I mention 2 options to solve the find-nearest-events method, and I chose the one mentioned in Example 1 for this reason.
 
 
-##NearestEvents
+## NearestEvents
 There are several ways to implement the task of returning a list of the five closest events
 
 Example 1
@@ -86,7 +83,7 @@ For this reason, the method in example 1 sounds more realistic.
 ```
 
 
-##Building
+## Building
 
 Make sure [Maven](http://maven.apache.org/install.html) is installed on your device and run the following command inside the project folder:
 
@@ -95,13 +92,13 @@ Make sure [Maven](http://maven.apache.org/install.html) is installed on your dev
 This should create an executable jar file inside the `\target` directory
 
 
-##Execution
+## Execution
 
 To execute the jar file, run the following command from the project folder:
 
 > $ java -jar target/viagogo-1.0-SNAPSHOT.jar
 
 
-##Tests
+## Tests
 
 All tests, located in the `src\test\..\viagogo` folder, are automatically executed when building the project.

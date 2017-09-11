@@ -1,7 +1,7 @@
 # TicketMap
 
 ## Technologies
-- Java SE 8
+- Java
 - Maven as Build tool and dependency management
 - JUnit for testing
 
